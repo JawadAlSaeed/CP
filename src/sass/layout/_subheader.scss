@@ -59,14 +59,14 @@
 	.subheader-enabled:not(.subheader-fixed) {
 		// Content
 		.content {
-			padding-top: 0;
+			//padding-top: 0;
 		}
 
 		// Subheader Solid Mode
 		.subheader.subheader-solid {
 			background-color: get($subheader-config, fixed, bg-color);
 			border-top: get($subheader-config, default, border-top);
-			margin-bottom: get($page-padding, desktop);
+			margin-bottom: get($page-spacers, y, desktop);
 		}
 	}
 }
@@ -80,7 +80,7 @@
 		}
 
 		.subheader.subheader-solid {
-			margin-bottom: get($page-padding, tablet-and-mobile);
+			margin-bottom: get($page-spacers, y, tablet-and-mobile);
 		}
 	}
 }

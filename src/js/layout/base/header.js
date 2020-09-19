@@ -7,20 +7,6 @@ var KTLayoutHeader = function() {
     var _object;
 
 	// Private functions
-	var _init = function() {
-        var options = {
-            offset: {
-                desktop: 200,
-                tabletAndMobile: 300
-            },
-            releseOnReverse: {
-                desktop: true,
-                tabletAndMobile: false
-            }
-		};
-
-		_object = new KTHeader(_element, options);
-	}
 
     // Get height
     var _getHeight = function() {
@@ -51,9 +37,6 @@ var KTLayoutHeader = function() {
             if (!_element) {
                 return;
             }
-
-            // Initialize
-            _init();
 		},
 
         isFixed: function() {

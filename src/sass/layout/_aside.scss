@@ -3,6 +3,11 @@
 //
 
 .aside {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: get($aside-config, base, zindex);
 	width: get($aside-config, base, width);
 
 	// Aside Menu
@@ -14,20 +19,6 @@
 // Desktop Mode
 @include media-breakpoint-up(lg) {
 	.aside {
-		@include border-radius($border-radius);
-
-		// Aside Menu
-		.aside-menu,
-		.aside-menu-wrapper {
-			@include border-radius($border-radius);
-		}
-
-		// Static Aside Mode
-		.aside-static & {
-			position: relative;
-			z-index: 1;
-		}
-
 		// Scroll
 		@include perfect-scrollbar-ver-size( get($aside-config, base, scrollbar-width) );
 	}
@@ -38,4 +29,4 @@
 @include menu-ver-build-theme($aside-menu-config, default);
 
 // Aside offcanvas panel for mobile mode
-@include offcanvas-build(aside, tablet-and-mobile, get($aside-config, offcanvas-mobile));
+@include offcanvas-build(aside, default, get($aside-config, offcanvas));

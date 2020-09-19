@@ -7,29 +7,11 @@ var KTLayoutAsideMenu = function() {
 
 	// Initialize
 	var _init = function() {
-		var menuDesktopMode = (KTUtil.attr(_element, 'data-menu-dropdown') === '1' ? 'dropdown' : 'accordion');
-        var scroll;
-
-		if (KTUtil.isBreakpointDown('lg') && KTUtil.attr(_element, 'data-menu-scroll') === '1') {
-			scroll = {
-				rememberPosition: true, // remember position on page reload
-				height: function() { // calculate available scrollable area height
-					var height = parseInt(KTUtil.getViewPort().height);
-
-					height = height - (parseInt(KTUtil.css(_element, 'marginBottom')) + parseInt(KTUtil.css(_element, 'marginTop')));
-
-					return height;
-				}
-			};
-		}
-
+        
 		_menuObject = new KTMenu(_element, {
-			// Vertical scroll
-			scroll: scroll,
-
 			// Submenu setup
 			submenu: {
-				desktop: menuDesktopMode,
+				desktop: 'accordion',
 				tablet: 'accordion', // menu set to accordion in tablet mode
 				mobile: 'accordion' // menu set to accordion in mobile mode
 			},
