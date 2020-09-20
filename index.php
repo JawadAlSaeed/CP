@@ -19,6 +19,13 @@ $query ="SELECT id,name,number  FROM phonebook";
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
+		<!-- begin:: data table -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+           <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />   -->
+           <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
+           <!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
+           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+        <!-- end:: data table--> 
 		<!--begin::Page Vendors Styles(used by this page)-->
 		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendors Styles-->
@@ -38,7 +45,7 @@ $query ="SELECT id,name,number  FROM phonebook";
 		<!--begin::Header Mobile-->
 		<div id="kt_header_mobile" class="header-mobile header-mobile-fixed">
 			<!--begin::Logo-->
-			<a href="index.html">
+			<a href="index.php">
 				<img alt="Logo" src="assets/media/logos/logo-letter-1.png" class="logo-default max-h-30px" />
 			</a>
 			<!--end::Logo-->
@@ -76,7 +83,7 @@ $query ="SELECT id,name,number  FROM phonebook";
 							<!--begin::Left-->
 							<div class="d-none d-lg-flex align-items-center mr-3">
 								<!--begin::Logo-->
-								<a href="index.html">
+								<a href="index.php">
 									<img alt="Logo" src="assets/media/logos/logo-letter-1.png" class="logo-sticky max-h-35px" />
 								</a>
 								<!--end::Logo-->
