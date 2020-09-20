@@ -1,15 +1,14 @@
-<!--
-Template Name: Metronic - Bootstrap 4 HTML, React, Angular 9 & VueJS Admin Dashboard Theme
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: https://1.envato.market/EA4JP
-Renew Support: https://1.envato.market/EA4JP
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
+<?php  
+ $connect = mysqli_connect("localhost", "root", "", "phoneBookProject"); 
+ 
+ if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$query ="SELECT id,name,number  FROM phonebook";  
+ $result = $connect->query($query); 
+
+ ?>  
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="">
@@ -274,6 +273,59 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
 							<div class="container">
+								<!--begin::Entry-->
+								<div class="d-flex flex-column-fluid">
+									<!--begin::Container-->
+									<div class="container">
+										<div class="row">
+											<div class="col-lg-12">
+												<!--begin::Card-->
+												<div class="card card-custom gutter-b example example-compact">
+													<div class="card-header">
+														<h3 class="card-title">PhoneBook List</h3>
+														<div class="card-toolbar">
+														</div>
+													</div>
+													<div class="container">  
+														<br />  
+														<div class="table-responsive">  
+															<table id="ex_en_data" class="table table-striped table-bordered">  
+																<thead>  
+																	<tr>   
+																			<td>Id</td>  
+																			<td>Name</td>  
+																			<td>Number</td>
+																	</tr>  
+																</thead>  
+																<?php  
+																			
+																			while($row = mysqli_fetch_array($result) ) 
+																			{  
+																				if ($result->num_rows > 0) {
+																					$id = $row["id"];
+																					$name = $row["name"];
+																					$number = $row["number"];
+																				}
+																				echo '  
+																				<tr>  
+																					<td>'.$id.'</td>
+																					<td>'.$name.'</td>
+																					<td>'.$number.'</td> 
+																				</tr>  
+																				';  
+																			}
+																			?>  
+															</table>  
+														</div>  
+													</div>  
+												</div>
+												<!--end::Card-->
+											</div>
+										</div>
+									</div>
+									<!--end::Container-->
+								</div>
+								<!--end::Entry-->
 							</div>
 							<!--end::Container-->
 						</div>
