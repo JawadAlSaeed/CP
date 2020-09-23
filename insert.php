@@ -5,7 +5,7 @@
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$query ="SELECT id, name, address, number FROM phonebook";  
+$query ="SELECT id,name,number  FROM phonebook";  
  $result = $connect->query($query); 
 
  ?>  
@@ -91,6 +91,7 @@ $query ="SELECT id, name, address, number FROM phonebook";
 								</a>
 								<!--end::Logo-->
 								<!--begin::Desktop Search-->
+								
 								<div style="padding-top: 13px;" class="quick-search quick-search-inline ml-20 w-500px" id="kt_quick_search_inline">
 									<!--begin::Form-->
 									<form method="get" class="quick-search-form">
@@ -190,15 +191,6 @@ $query ="SELECT id, name, address, number FROM phonebook";
 									<!--end::Dropdown-->
 								</div>
 								<!--end::Tablet & Mobile Search-->
-								<!--begin::Create-->
-								<div class="dropdown">
-									<!--begin::Toggle-->
-									<div class="topbar-item mr-4" data-offset="10px,0px">
-										<a href="insert.php" class="btn font-weight-bolder btn-sm btn-light-success px-5">Create</a>
-									</div>
-									<!--end::Toggle-->
-								</div>
-								<!--end::Create-->
 							</div>
 							<!--end::Topbar-->
 						</div>
@@ -217,49 +209,54 @@ $query ="SELECT id, name, address, number FROM phonebook";
 									<div class="container">
 										<div class="row">
 											<div class="col-lg-12">
-												<!--begin::Card-->
-												<div class="card card-custom gutter-b example example-compact">
-													<div class="card-header">
-														<h3 class="card-title">PhoneBook List</h3>
-														<div class="card-toolbar">
+                                            <form action="php_send.php" method="post" class="form">
+												<div class="card-body">
+                                                    <div class="form-group row">
+														<div class="col-lg-6">
+															<label>Enter Name</label>
+															<input type="name" class="form-control" name="name" placeholder="Shop Name" />
+														</div>
+														<div class="col-lg-6">
+                                                            <label>Enter Address</label>
+															<input type="address" class="form-control" name="address" placeholder="Dammam" />
 														</div>
 													</div>
-													<div class="container">  
-														<br />  
-														<div class="table-responsive">  
-															<table id="ex_en_data" class="table table-striped table-bordered">  
-																<thead>  
-																	<tr>   
-																			<td>Id</td>  
-																			<td>Name</td> 
-																			<td>Address</td>  
-																			<td>Number</td>
-																	</tr>  
-																</thead>  
-																<?php  
-																	while($row = mysqli_fetch_array($result)) 
-																	{  
-																		if ($result->num_rows > 0) {
-																			$id = $row["id"];
-																			$name = $row["name"];
-																			$address = $row["address"];
-																			$number = $row["number"];
-																		}
-																		echo '  
-																		<tr>  
-																			<td>'.$id.'</td>
-																			<td>'.$name.'</td>
-																			<td>'.$address.'</td>
-																			<td>'.$number.'</td> 
-																		</tr>  
-																		';  
-																	}
-																?>  
-															</table>  
-														</div>  
-													</div>  
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-6">
+                                                                <label>Enter Number</label>
+                                                                <input type="number" class="form-control" name="number" placeholder="+96612345678" />
+                                                        </div>
+                                                    </div>
 												</div>
-												<!--end::Card-->
+												<div class="card-footer">
+													<div class="row">
+														<div class="col-lg-6">
+															<button type="submit" class="btn btn-primary mr-2">Submit</button>
+															<button type="reset" class="btn btn-secondary">Cancel</button>
+														</div>
+													</div>
+												</div>
+												<!--mgs-->
+												<p style="padding-left: 30px; color:#1BC5BD;">
+													<?php
+														if (!empty($_GET['error'])){
+															if ($_GET['error'] == 'emptyfields') {
+																echo "<P style='padding-left: 30px; color:red;'>Please fill all data!</p>";
+															}
+														}
+														if (!empty($_GET['status'])){
+															if ($_GET['status'] == 'success') {
+																echo "Submitted Successfully!";
+															}
+
+															else {
+																echo "";
+															}
+														}
+													?>
+												</p>
+											<!--mgs-->
+											</form>
 											</div>
 										</div>
 									</div>
