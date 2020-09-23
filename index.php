@@ -1,14 +1,31 @@
 <?php  
- $connect = mysqli_connect("localhost", "root", "", "phoneBookProject"); 
- 
- if (!$connect) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+	$connect = mysqli_connect("localhost", "root", "", "phoneBookProject"); 
+	
+	if (!$connect) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
 
-$query ="SELECT id, name, address, number FROM phonebook";  
- $result = $connect->query($query); 
+	$query ="SELECT id, name, address, number FROM phonebook";  
+	$result = $connect->query($query); 
+?>  
 
- ?>  
+<?php  
+
+function runMyFunction($id) {
+	$connect = mysqli_connect("localhost", "root", "", "phoneBookProject"); 
+	if (!$connect) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	$query ="DELETE FROM `phonebook` WHERE `id` = $id";  
+	$result = $connect->query($query); 
+	header('Location: index.php');
+  	}
+
+	if (isset($_GET['delete'])) {
+		$id = $_GET['link'];
+		runMyFunction($id);
+	}
+?>
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="">
@@ -234,6 +251,7 @@ $query ="SELECT id, name, address, number FROM phonebook";
 																			<td>Name</td> 
 																			<td>Address</td>  
 																			<td>Number</td>
+																			<td>Actions</td>
 																	</tr>  
 																</thead>  
 																<?php  
@@ -250,7 +268,8 @@ $query ="SELECT id, name, address, number FROM phonebook";
 																			<td>'.$id.'</td>
 																			<td>'.$name.'</td>
 																			<td>'.$address.'</td>
-																			<td>'.$number.'</td> 
+																			<td>'.$number.'</td>
+																			<td><a href="index.php?delete=true&link=' . $id . '"> delete </a></td> 
 																		</tr>  
 																		';  
 																	}
