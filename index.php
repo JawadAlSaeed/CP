@@ -4,8 +4,12 @@
 	if (!$connect) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
-
-	$query ="SELECT id, name, address, number FROM phonebook";  
+	if (isset($_GET['name'])) {
+		$name = $_GET['name'];
+		$query = "SELECT id, name, address, number FROM phonebook where name like '%$name%'";
+	}else{
+		$query ="SELECT id, name, address, number FROM phonebook";  
+	}
 	$result = $connect->query($query); 
 ?>  
 
@@ -38,10 +42,10 @@ function runMyFunction($id) {
 		<!--end::Fonts-->
 		<!-- begin:: data table -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-           <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />   -->
-           <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-           <!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
-           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />   -->
+		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
+		<!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
         <!-- end:: data table--> 
 		<!--begin::Page Vendors Styles(used by this page)-->
 		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
@@ -127,7 +131,7 @@ function runMyFunction($id) {
 													</span>
 												</span>
 											</div>
-											<input type="text" class="form-control h-45px" placeholder="Search..." />
+											<input type="name" name="name" class="form-control h-45px" placeholder="Search..." />
 											<div class="input-group-append">
 												<span class="input-group-text">
 													<i class="quick-search-close ki ki-close icon-sm text-muted"></i>
