@@ -1,7 +1,7 @@
 # PhoneBook Project
 
 
-PhoneBook is a Website application to store and find numbers of your favorite Stores and Shops
+PhoneBook is a Website application to store amd view numbers of your favorite Stores and Shops
 
 
 
