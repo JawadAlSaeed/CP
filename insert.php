@@ -5,7 +5,7 @@
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$query ="SELECT id,name,number  FROM phonebook";  
+$query ="SELECT id, name, number  FROM phonebook";  
  $result = $connect->query($query); 
 
  ?>  
@@ -184,7 +184,7 @@ $query ="SELECT id,name,number  FROM phonebook";
                                                     <div class="form-group row">
                                                         <div class="col-lg-6">
                                                                 <label>Enter Number</label>
-                                                                <input type="number" class="form-control" name="number" placeholder="+96612345678" />
+                                                                <input type="number" class="form-control" name="number" placeholder="96612345678" />
                                                         </div>
                                                     </div>
 												</div>
@@ -202,13 +202,16 @@ $query ="SELECT id,name,number  FROM phonebook";
 														if (!empty($_GET['error'])){
 															if ($_GET['error'] == 'emptyfields') {
 																echo "<P style='padding-left: 30px; color:red;'>Please fill all data!</p>";
+																exit();
+															}else if($_GET['error'] == 'wrongphoneformat'){
+																echo "<P style='padding-left: 30px; color:red;'>Enter correct number format!</p>";
+																exit();
 															}
 														}
 														if (!empty($_GET['status'])){
 															if ($_GET['status'] == 'success') {
 																echo "Submitted Successfully!";
 															}
-
 															else {
 																echo "";
 															}

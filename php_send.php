@@ -16,7 +16,12 @@ if (!$conn) {
 }
 
 if (!empty($_POST['name']) || !empty($_POST['address']) || !empty($_POST['number']) ) {
-$sql = "INSERT INTO phonebook (name , address , number) VALUES ('$_POST[name]' , '$_POST[address]' , '$_POST[number]')";
+    if (preg_match("/^(966)(5)[0-9]{8}$/", $_POST['number'])){
+        $sql = "INSERT INTO phonebook (name , address , number) VALUES ('$_POST[name]' , '$_POST[address]' , '$_POST[number]')";
+    }else{
+        header("location: insert.php?error=wrongphoneformat&status=&data=");
+        exit();
+    }
 }else{
     header("location: insert.php?error=emptyfields&status=&data=");
     exit();
