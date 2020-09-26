@@ -1,0 +1,2 @@
+#reset the auto increment in requestID
+ALTER TABLE tablename AUTO_INCREMENT = 1

@@ -191,8 +191,8 @@ $query ="SELECT id, name, number  FROM phonebook";
 												<div class="card-footer">
 													<div class="row">
 														<div class="col-lg-6">
-															<button type="submit" class="btn btn-primary mr-2">Submit</button>
-															<button type="reset" class="btn btn-secondary">Cancel</button>
+															<button type="submit" class="btn font-weight-bolder btn-sm btn-light-success px-5">Submit</button>
+															<button type="reset" class="btn font-weight-bolder btn-sm  px-5">Cancel</button>
 														</div>
 													</div>
 												</div>
