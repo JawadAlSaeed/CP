@@ -16,7 +16,7 @@ if (!$conn) {
 }
 
 if (!empty($_POST['name']) || !empty($_POST['address']) || !empty($_POST['number']) ) {
-    if (preg_match("/^(966)(5)[0-9]{8}$/", $_POST['number'])){
+    if (preg_match("/^(966)(5)[0-9]{8}$/", $_POST['number']) || preg_match("/^(05)[0-9]{8}$/", $_POST['number']) || preg_match("/^(966)(13)[0-9]{7}$/", $_POST['number']) || preg_match("/^(013)[0-9]{7}$/", $_POST['number']) || preg_match("/^(966)(9200)[0-9]{5}$/", $_POST['number']) || preg_match("/^(9200)[0-9]{5}$/", $_POST['number'])){
         $sql = "INSERT INTO phonebook (name , address , number) VALUES ('$_POST[name]' , '$_POST[address]' , '$_POST[number]')";
     }else{
         header("location: insert.php?error=wrongphoneformat&status=&data=");
